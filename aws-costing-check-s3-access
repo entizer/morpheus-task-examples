@@ -1,0 +1,18 @@
+def myAccessKey = ''
+def mySecretKey = ''
+
+// Costing Bucket example:  myCosting-report-bucket
+def myCostingBucket = ''
+
+// Manifest File Key example:  myPrefix/myCostingReport/20221101-20221201/myCostingReport-Manifest.json
+def myManifestFileKey = ''
+
+def provider = com.bertramlabs.plugins.karman.StorageProvider.create(provider:'s3',accessKey:myAccessKey,secretKey:mySecretKey)
+def costingBucket = provider[myCostingBucket]
+
+// https://bertramdev.github.io/karman/guide/usage.html#directories
+// println costingBucket.listFiles()
+
+def manifestFile = costingBucket[myManifestFileKey]
+
+println manifestFile.exists()
